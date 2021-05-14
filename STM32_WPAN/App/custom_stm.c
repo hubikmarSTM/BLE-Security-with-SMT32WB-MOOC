@@ -219,7 +219,7 @@ void SVCCTL_InitCustomSvc(void)
                       UUID_TYPE_128, &uuid,
                       SizeMy_Char,
                       CHAR_PROP_READ,
-                      ATTR_PERMISSION_ENCRY_READ,
+                      ATTR_PERMISSION_AUTHEN_READ,
                       GATT_DONT_NOTIFY_EVENTS,
                       0x10,
                       CHAR_VALUE_LEN_CONSTANT,

@@ -502,7 +502,7 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification( void *pckt )
         break;
 
         case ACI_GAP_PASS_KEY_REQ_VSEVT_CODE:
-            aci_gap_pass_key_resp(BleApplicationContext.BleApplicationContext_legacy.connectionHandle, CFG_FIXED_PIN);
+            aci_gap_pass_key_resp(BleApplicationContext.BleApplicationContext_legacy.connectionHandle, 123456);
         break;
 
         case ACI_GAP_NUMERIC_COMPARISON_VALUE_VSEVT_CODE:
