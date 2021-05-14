@@ -501,24 +501,14 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification( void *pckt )
          APP_DBG_MSG("\r\n\r** ACI_GAP_KEYPRESS_NOTIFICATION_VSEVT_CODE \n");
         break;
 
-        case ACI_GAP_PASS_KEY_REQ_VSEVT_CODE:;
-    		uint8_t p_data[6];
-    		HAL_UART_Receive(&huart1, p_data, 6, p_data);
-
-        	p_data[0] -= 0x30;
-        	p_data[1] -= 0x30;
-        	p_data[2] -= 0x30;
-        	p_data[3] -= 0x30;
-        	p_data[4] -= 0x30;
-        	p_data[5] -= 0x30;
-        	uint32_t passkey = p_data[0] * 100000 + p_data[1] * 10000 + p_data[2] * 1000 + p_data[3] * 100 + p_data[4] * 10 + p_data[5] * 1;
-            aci_gap_pass_key_resp(BleApplicationContext.BleApplicationContext_legacy.connectionHandle, passkey);
+        case ACI_GAP_PASS_KEY_REQ_VSEVT_CODE:
+            aci_gap_pass_key_resp(BleApplicationContext.BleApplicationContext_legacy.connectionHandle, CFG_FIXED_PIN);
         break;
 
         case ACI_GAP_NUMERIC_COMPARISON_VALUE_VSEVT_CODE:
             evt_numeric_value = (aci_gap_numeric_comparison_value_event_rp0 *)blecore_evt->data;
             numeric_value = evt_numeric_value->Numeric_Value;
-            APP_DBG_MSG("numeric_value = %lx\n", numeric_value);
+            APP_DBG_MSG("numeric_value = %d\n", numeric_value);
             aci_gap_numeric_comparison_value_confirm_yesno(BleApplicationContext.BleApplicationContext_legacy.connectionHandle, YES);
         break;
 
