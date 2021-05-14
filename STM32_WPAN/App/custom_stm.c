@@ -24,7 +24,7 @@
 #include "custom_stm.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "custom_app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -69,7 +69,7 @@ PLACE_IN_SECTION("BLE_DRIVER_CONTEXT") static CustomContext_t CustomContext;
  */
 
 /* USER CODE BEGIN PV */
-
+extern Custom_App_ConnHandle_Not_evt_t handleNotification;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -140,7 +140,8 @@ static SVCCTL_EvtAckStatus_t Custom_STM_Event_Handler(void *Event)
           break;
         case ACI_GATT_READ_PERMIT_REQ_VSEVT_CODE :
           /* USER CODE BEGIN EVT_BLUE_GATT_READ_PERMIT_REQ */
-
+          aci_gatt_allow_read(handleNotification.ConnectionHandle);
+          APP_DBG_MSG("Read Permitted  \n");
           /* USER CODE END EVT_BLUE_GATT_READ_PERMIT_REQ */
           break;
         case ACI_GATT_WRITE_PERMIT_REQ_VSEVT_CODE:
@@ -219,8 +220,8 @@ void SVCCTL_InitCustomSvc(void)
                       UUID_TYPE_128, &uuid,
                       SizeMy_Char,
                       CHAR_PROP_READ,
-                      ATTR_PERMISSION_AUTHEN_READ,
-                      GATT_DONT_NOTIFY_EVENTS,
+                      ATTR_PERMISSION_AUTHOR_READ,
+                      GATT_NOTIFY_READ_REQ_AND_WAIT_FOR_APPL_RESP,
                       0x10,
                       CHAR_VALUE_LEN_CONSTANT,
                       &(CustomContext.CustomMy_CharHdle));

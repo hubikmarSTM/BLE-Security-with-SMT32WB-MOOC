@@ -508,7 +508,7 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification( void *pckt )
         case ACI_GAP_NUMERIC_COMPARISON_VALUE_VSEVT_CODE:
             evt_numeric_value = (aci_gap_numeric_comparison_value_event_rp0 *)blecore_evt->data;
             numeric_value = evt_numeric_value->Numeric_Value;
-            APP_DBG_MSG("numeric_value = %d\n", numeric_value);
+            APP_DBG_MSG("numeric_value = %lx\n", numeric_value);
             aci_gap_numeric_comparison_value_confirm_yesno(BleApplicationContext.BleApplicationContext_legacy.connectionHandle, YES);
         break;
 
