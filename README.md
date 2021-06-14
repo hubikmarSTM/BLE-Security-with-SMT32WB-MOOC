@@ -11,6 +11,9 @@ Target: STM32WB Nucleo board<br/>
 6. Bonding
 7. Authorization
 
+See video content and other support material for this project at <br/>
+https://www.st.com/content/st_com/en/support/learning/stm32-education/stm32-moocs/bluetooth-low-energy-security-with-stm32wb-mooc.html
+
 Tested with <br/>
 RF Stack: stm32wb5x_BLE_Stack_full_fw.bin from STM32Cube_FW_WB_V1.11.1.<br/>
 STM32CubeMX V6.2.1<br/>
